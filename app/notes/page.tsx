@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './Notes.module.css';
+import CreateNote from './[id]/CreateNote';
 
 async function getNotes() {
     // const db = new PocketBase('http://127.0.0.1:8090');
@@ -11,6 +12,7 @@ async function getNotes() {
 
 export default async function NotesPage() {
     const notes = await getNotes()
+    
     return (
         <div>
             <h1>Notes</h1>
@@ -19,6 +21,7 @@ export default async function NotesPage() {
                     return <Note key={note.id} note={note} />;
                 })}
             </div>
+            <CreateNote />
         </div>
     )
 }
